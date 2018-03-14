@@ -12,6 +12,6 @@ namespace WPFDISample
             DataContext = this;
         }
 
-        public MainViewModel ViewModel => AppServices.Instance.ServiceProvider.GetService<MainViewModel>();
+        public MainViewModel ViewModel { get; } = AppServices.Instance.ServiceProvider.GetService<MainViewModel>();
     }
 }

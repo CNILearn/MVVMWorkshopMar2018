@@ -2,6 +2,7 @@
 using DISampleViewModels.Services;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using TheBestMVVMFrameworkInTown.Core;
 
 namespace DISampleViewModels.ViewModels
@@ -15,8 +16,7 @@ namespace DISampleViewModels.ViewModels
             _showMessageService = showMessageService;
             _booksService = booksService;
             RefreshBooksAsync();
-           
-
+    
             MessageCommand = new RelayCommand(OnMessage);
         }
 
@@ -28,6 +28,7 @@ namespace DISampleViewModels.ViewModels
             {
                 Books.Add(book);
             }
+            SelectedBook = books.FirstOrDefault();
         }
 
         private Book _selectedBook;
@@ -37,7 +38,6 @@ namespace DISampleViewModels.ViewModels
             get => _selectedBook;
             set => SetProperty(ref _selectedBook, value);
         }
-
 
         public ObservableCollection<Book> Books { get; } = new ObservableCollection<Book>();
 
